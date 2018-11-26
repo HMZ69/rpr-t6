@@ -20,7 +20,8 @@ import java.util.Date;
 import java.util.ResourceBundle;
 
 public class Controller implements Initializable {
-    private static boolean ispravnost = true;
+    private static boolean ispravnost = false;
+
     @FXML
     private TextField imeTextfield;
 
@@ -63,42 +64,51 @@ public class Controller implements Initializable {
     @FXML
     private ComboBox<String> boracke;
 
-    public void imePogresno() {
+    public boolean imePogresno() {
         if (imeTextfield.getText().isEmpty() || imeTextfield.getText().length() > 20) {
             imeTextfield.setStyle("-fx-background-color: red");
+            return false;
         }
         else {
             imeTextfield.setStyle("-fx-background-color: green");
+            return true;
         }
     }
 
-    public void prezimePogresno() {
+    public boolean prezimePogresno() {
         if (prezimeTextfield.getText().isEmpty() || prezimeTextfield.getText().length() > 20) {
             prezimeTextfield.setStyle("-fx-background-color: red");
+            return false;
         }
         else {
             prezimeTextfield.setStyle("-fx-background-color: green");
+            return true;
         }
     }
 
-    public void indeksIspravnost() {
-        if (indeksTextfield.getText().length() != 5)
+    public boolean indeksIspravnost() {
+        if (indeksTextfield.getText().length() != 5) {
             indeksTextfield.setStyle("-fx-background-color: red");
+            return false;
+        }
         else {
             indeksTextfield.setStyle("-fx-background-color: green");
+            return true;
         }
     }
 
-    public void jmbgIspravnost() {
+    public boolean jmbgIspravnost() {
         if (jmbgTextfield.getText().length() != 13) {
             jmbgTextfield.setStyle("-fx-background-color: red");
+            return false;
         }
         else {
             jmbgTextfield.setStyle("-fx-background-color: green");
+            return true;
         }
     }
 
-    public void datumIspravnost() {
+    public boolean datumIspravnost() {
         String jmbgDatum = jmbgTextfield.getText().substring(0,2) + "." + jmbgTextfield.getText().substring(2,4) + ".";
 
         if (jmbgTextfield.getText().charAt(4) == '9')
@@ -109,15 +119,23 @@ public class Controller implements Initializable {
         System.out.println("Datum varijabla: " + jmbgDatum);
         if (!datum.getEditor().getText().equals(jmbgDatum)) {
             datum.setStyle("-fx-background-color: red");
+            return false;
         }
         else {
             datum.setStyle("-fx-background-color: green");
+            return true;
         }
     }
 
     public void prijavaGreska() throws Exception {
-        if (!ispravnost) {
+        if (!imePogresno() || !prezimePogresno() || !indeksIspravnost() || !jmbgIspravnost() || !datumIspravnost()) {
             try {
+                AlertBox.prikaziGresku("Greška", "Greška");
+            }
+            catch(Exception e) {
+                e.printStackTrace();
+            }
+            /*try {
                 Stage primaryStage = new Stage();
                 Parent root = FXMLLoader.load(getClass().getResource("Greska.fxml"));
                 Scene scene = new Scene(root);
@@ -126,31 +144,30 @@ public class Controller implements Initializable {
             }
             catch(Exception e) {
                 e.printStackTrace();
-            }
+            }*/
         }
+        else
+            ispravnost = true;
     }
 
     public void prijavi() throws Exception {
-        /*if (imeTextfield.getText().isEmpty() || imeTextfield.getText().length() > 20) {
-            imeTextfield.setStyle("-fx-background-color: #ff4b46");
-
-            return;
-        }*/
         prijavaGreska();
-        System.out.println("Ime: " + imeTextfield.getText());
-        System.out.println("Prezime: " + prezimeTextfield.getText());
-        System.out.println("Broj indeksa: " + indeksTextfield.getText());
-        System.out.println("JMBG: " + jmbgTextfield.getText());
-        System.out.println("Datum rođenja: " + datum.getEditor().getText());
-        System.out.println("Mjesto rođenja: " + mjestoRodenja.getValue());
-        System.out.println("Kontakt adresa: " + adresaTextfield.getText());
-        System.out.println("Broj telefona: " + telTextfield.getText());
-        System.out.println("Email adresa: " + emailTextfield.getText());
-        System.out.println("Odsjek: " + odsjek.getValue());
-        System.out.println("Godina stuija: " + godStudija.getValue());
-        System.out.println("Ciklus: " + ciklStudija.getValue());
-        System.out.println("Redovan/redovan samofinansirajući: " + finansiranje.getValue());
-        System.out.println("Boračke kategorije: " + boracke.getValue());
+        if (ispravnost) {
+            System.out.println("Ime: " + imeTextfield.getText());
+            System.out.println("Prezime: " + prezimeTextfield.getText());
+            System.out.println("Broj indeksa: " + indeksTextfield.getText());
+            System.out.println("JMBG: " + jmbgTextfield.getText());
+            System.out.println("Datum rođenja: " + datum.getEditor().getText());
+            System.out.println("Mjesto rođenja: " + mjestoRodenja.getValue());
+            System.out.println("Kontakt adresa: " + adresaTextfield.getText());
+            System.out.println("Broj telefona: " + telTextfield.getText());
+            System.out.println("Email adresa: " + emailTextfield.getText());
+            System.out.println("Odsjek: " + odsjek.getValue());
+            System.out.println("Godina stuija: " + godStudija.getValue());
+            System.out.println("Ciklus: " + ciklStudija.getValue());
+            System.out.println("Redovan/redovan samofinansirajući: " + finansiranje.getValue());
+            System.out.println("Boračke kategorije: " + boracke.getValue());
+        }
     }
 
     private ObservableList<String> mjesta = FXCollections.observableArrayList("Sarajevo", "Zenica", "Tuzla", "Banja Luka", "Bihać", "Mostar");
