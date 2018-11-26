@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.text.Font?>
 
-<GridPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1000.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ba.unsa.etf.rpr.Controller">
+<GridPane gridLinesVisible="true" hgap="2.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1000.0" prefWidth="600.0" vgap="2.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ba.unsa.etf.rpr.Controller">
   <columnConstraints>
     <ColumnConstraints hgrow="ALWAYS" minWidth="600.0" prefWidth="100.0" />
   </columnConstraints>
@@ -20,8 +20,8 @@
     <RowConstraints maxHeight="1.7976931348623157E308" minHeight="200.0" prefHeight="30.0" vgrow="ALWAYS" />
     <RowConstraints maxHeight="1.7976931348623157E308" minHeight="200.0" prefHeight="30.0" vgrow="ALWAYS" />
     <RowConstraints maxHeight="1.7976931348623157E308" minHeight="200.0" prefHeight="30.0" vgrow="ALWAYS" />
-      <RowConstraints maxHeight="1.7976931348623157E308" minHeight="200.0" prefHeight="80.0" vgrow="ALWAYS" />
-      <RowConstraints maxHeight="1.7976931348623157E308" minHeight="200.0" prefHeight="3.0" vgrow="ALWAYS" />
+      <RowConstraints maxHeight="1.7976931348623157E308" minHeight="250.0" prefHeight="244.0" vgrow="ALWAYS" />
+      <RowConstraints maxHeight="1.7976931348623157E308" minHeight="106.0" prefHeight="156.0" vgrow="ALWAYS" />
   </rowConstraints>
    <children>
       <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="200.0" prefWidth="600.0" GridPane.hgrow="ALWAYS" GridPane.vgrow="ALWAYS">
@@ -48,7 +48,7 @@
             </Label>
             <TextField fx:id="imeTextfield" layoutX="179.0" layoutY="46.0" onKeyTyped="#imePogresno" promptText="Ime" />
             <TextField fx:id="prezimeTextfield" layoutX="179.0" layoutY="83.0" onKeyTyped="#prezimePogresno" promptText="Prezime" />
-            <TextField fx:id="indeksTextfield" layoutX="179.0" layoutY="120.0" promptText="Broj indeksa" />
+            <TextField fx:id="indeksTextfield" layoutX="179.0" layoutY="120.0" onKeyTyped="#indeksIspravnost" promptText="Broj indeksa" />
          </children></AnchorPane>
       <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="200.0" prefWidth="600.0" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.vgrow="ALWAYS">
          <children>
@@ -72,8 +72,8 @@
                   <Font size="16.0" />
                </font>
             </Label>
-            <TextField fx:id="jmbgTextfield" layoutX="183.0" layoutY="50.0" promptText="JMBG" />
-            <DatePicker fx:id="datum" layoutX="183.0" layoutY="88.0" promptText="dan-mjesec-godina" />
+            <TextField fx:id="jmbgTextfield" layoutX="183.0" layoutY="50.0" onKeyTyped="#jmbgIspravnost" promptText="JMBG" />
+            <DatePicker fx:id="datum" layoutX="183.0" layoutY="88.0" onInputMethodTextChanged="#datumIspravnost" onKeyPressed="#datumIspravnost" onKeyReleased="#datumIspravnost" onKeyTyped="#datumIspravnost" promptText="dan-mjesec-godina" />
             <ComboBox fx:id="mjestoRodenja" editable="true" layoutX="183.0" layoutY="132.0" prefWidth="150.0" promptText="Mjesto rođenja" />
          </children></AnchorPane>
       <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="200.0" prefWidth="600.0" GridPane.hgrow="ALWAYS" GridPane.rowIndex="2" GridPane.vgrow="ALWAYS">
