@@ -115,8 +115,6 @@ public class Controller implements Initializable {
             jmbgDatum += "1" + jmbgTextfield.getText().substring(4,7) + ".";
         else
             jmbgDatum += "2" + jmbgTextfield.getText().substring(4,7) + ".";
-        System.out.println("Datum unešen: " + datum.getEditor().getText());
-        System.out.println("Datum varijabla: " + jmbgDatum);
         if (!datum.getEditor().getText().equals(jmbgDatum)) {
             datum.setStyle("-fx-background-color: red");
             return false;
