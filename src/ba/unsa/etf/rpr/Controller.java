@@ -98,14 +98,32 @@ public class Controller implements Initializable {
     }
 
     public boolean jmbgIspravnost() {
+        if (jmbgTextfield.getText().length() == 13) {
+            String s = jmbgTextfield.getText();
+            int A = Integer.parseInt(String.valueOf(s.charAt(0)));
+            int B = Integer.parseInt(String.valueOf(s.charAt(1)));
+            int V = Integer.parseInt(String.valueOf(s.charAt(2)));
+            int G = Integer.parseInt(String.valueOf(s.charAt(3)));
+            int D = Integer.parseInt(String.valueOf(s.charAt(4)));
+            int Đ = Integer.parseInt(String.valueOf(s.charAt(5)));
+            int E = Integer.parseInt(String.valueOf(s.charAt(6)));
+            int Ž = Integer.parseInt(String.valueOf(s.charAt(7)));
+            int Z = Integer.parseInt(String.valueOf(s.charAt(8)));
+            int I = Integer.parseInt(String.valueOf(s.charAt(9)));
+            int J = Integer.parseInt(String.valueOf(s.charAt(10)));
+            int K = Integer.parseInt(String.valueOf(s.charAt(11)));
+            int L = Integer.parseInt(String.valueOf(s.charAt(12)));
+            int kontrolnaCifra = Integer.parseInt(String.valueOf(s.charAt(12)));
+            if (11 - ((7*(A+E) + 6*(B+Ž) + 5*(V+Z) + 4*(G+I) + 3*(D+J) + 2*(Đ+K)) % 11) == kontrolnaCifra) {
+                jmbgTextfield.setStyle("-fx-background-color: green");
+                return true;
+            }
+        }
         if (jmbgTextfield.getText().length() != 13) {
             jmbgTextfield.setStyle("-fx-background-color: red");
             return false;
         }
-        else {
-            jmbgTextfield.setStyle("-fx-background-color: green");
-            return true;
-        }
+        return false;
     }
 
     public boolean datumIspravnost() {

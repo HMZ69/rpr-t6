@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.text.Font?>
 
-<GridPane gridLinesVisible="true" hgap="2.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1000.0" prefWidth="600.0" vgap="2.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ba.unsa.etf.rpr.Controller">
+<GridPane gridLinesVisible="true" hgap="2.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1000.0" prefWidth="600.0" vgap="2.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ba.unsa.etf.rpr.Controller">
   <columnConstraints>
     <ColumnConstraints hgrow="ALWAYS" minWidth="600.0" prefWidth="100.0" />
   </columnConstraints>
@@ -46,7 +46,7 @@
                   <Font size="16.0" />
                </font>
             </Label>
-            <TextField fx:id="imeTextfield" layoutX="179.0" layoutY="46.0" onKeyTyped="#imePogresno" promptText="Ime" />
+            <TextField fx:id="imeTextfield" layoutX="179.0" layoutY="46.0" onKeyReleased="#imePogresno" onKeyTyped="#imePogresno" promptText="Ime" />
             <TextField fx:id="prezimeTextfield" layoutX="179.0" layoutY="83.0" onKeyTyped="#prezimePogresno" promptText="Prezime" />
             <TextField fx:id="indeksTextfield" layoutX="179.0" layoutY="120.0" onKeyTyped="#indeksIspravnost" promptText="Broj indeksa" />
          </children></AnchorPane>
